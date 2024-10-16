@@ -1,17 +1,13 @@
-<div style="margin: auto; width: 50%; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-  <mat-form-field>
-    <mat-label>Input</mat-label>
-    <input matInput>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Select</mat-label>
-    <mat-select>
-      <mat-option value="one">First option</mat-option>
-      <mat-option value="two">Second option</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Textarea</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
-</div>
+<form class="x">
+  <label for="field1">Field 1:</label>
+  <input type="text" id="field1" name="field1" required      [value]="fieldData.field1"><br><br>
+
+  <label for="field2">Field 2:</label>
+  <input type="text" id="field2" name="field2" required readonly="readonly" [value]="fieldData.field2"><br><br>
+
+  <label for="field3">Field 3:</label>
+  <input type="text" id="field3" name="field3" required readonly="readonly" [value]="fieldData.field3"><br><br>
+
+  <label for="field4">Field 4:</label>
+  <input type="text" id="field4" name="field4" required readonly="readonly" [value]="fieldData.field4"><br><br>
+</form>

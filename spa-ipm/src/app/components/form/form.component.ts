@@ -1,15 +1,23 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { DataService } from '../../services/service1';
 
 /** @title Simple form field */
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatSelectModule],
+  imports: [],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormComponent {}
+export class FormComponent implements OnInit{
+  fieldData: any = {};
+
+  constructor(private dataService: DataService) {}
+
+  ngOnInit(): void {
+    this.dataService.getData().subscribe((data) => {
+      this.fieldData = data;
+    });
+  }
+}
