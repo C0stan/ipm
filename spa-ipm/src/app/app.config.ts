@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { HttpInterceptProviders } from './services/interceptor.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes), 
-    provideClientHydration(), 
+    provideRouter(routes),
+    provideClientHydration(),
     provideAnimationsAsync(),
-    importProvidersFrom(HttpClientModule) // <- comment 
-  ]  
+    importProvidersFrom(HttpClientModule), // <- comment
+    HttpInterceptProviders,
+  ],
 };

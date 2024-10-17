@@ -3,15 +3,20 @@
     <mat-list role="list">
       <mat-list-item role="listitem" routerLink="table">home</mat-list-item>
       <mat-list-item role="listitem" routerLink="form">form</mat-list-item>
-    </mat-list>    
+    </mat-list>
   </mat-drawer>
   <mat-drawer-content>
     <mat-toolbar color="primary">
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>settings</mat-icon>
+      <button
+        mat-icon-button
+        class="example-icon favorite-icon"
+        aria-label="Example icon-button with heart icon"
+        (click)="fetch1()"
+      >
+        <mat-icon>person</mat-icon>
       </button>
-    </mat-toolbar>    
+    </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
