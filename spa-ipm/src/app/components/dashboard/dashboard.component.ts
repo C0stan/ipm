@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { TestService } from '../../services/test.service';
+import { MatButtonModule } from '@angular/material/button';
 
 /** @title Basic drawer */
 @Component({
@@ -20,11 +21,13 @@ import { TestService } from '../../services/test.service';
     MatToolbarModule,
     MatIconModule,
     MatProgressBarModule,
+    MatButtonModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
+  showFiller = false;
   constructor(private testService: TestService) {}
   fetch1() {
     this.testService.fetch().subscribe((data) => console.log(data));

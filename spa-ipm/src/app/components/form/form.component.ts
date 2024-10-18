@@ -4,7 +4,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
 
-/** @title Simple form field */
 @Component({
   selector: 'app-form',
   standalone: true,
@@ -13,18 +12,16 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './form.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-// export class FormComponent implements OnInit {
-export class FormComponent {
+export class FormComponent implements OnInit {
   fieldData: any = {};
 
-  // constructor(private dataService: DataService) {}
-  constructor(private http: HttpClient) {}
+  constructor(private dataService: DataService, private http: HttpClient) {}
 
-  // ngOnInit(): void {
-  //   this.dataService.getData().subscribe((data) => {
-  //     this.fieldData = data;
-  //   });
-  // }
+  ngOnInit(): void {
+    this.dataService.getData().subscribe((data) => {
+      this.fieldData = data;
+    });
+  }
 
   getUser() {
     this.http.get('http://localhost:4200/table').subscribe((res) => {
