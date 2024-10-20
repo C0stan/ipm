@@ -20,10 +20,14 @@ import { FormComponent } from './components/form/form.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AddComponent } from './components/add/add.component';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, TableComponent, FormComponent],
+  declarations: [AppComponent, TableComponent, FormComponent, AddComponent],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     // all Mat
