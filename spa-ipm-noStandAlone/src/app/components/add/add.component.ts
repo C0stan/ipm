@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { PeriodicElement } from '../table/table.component';
 
 @Component({
   selector: 'app-add',
@@ -7,14 +6,18 @@ import { PeriodicElement } from '../table/table.component';
   styleUrl: './add.component.css',
 })
 export class AddComponent {
-  theElement: PeriodicElement = {
-    position: 0,
-    name: '',
-    weight: 0,
-    symbol: '',
-  };
+  elementName: string = '';
+  elementWeight: number | null = null;
+  elementSymbol: string = '';
 
-  addElement(x: PeriodicElement) {
-    console.log(x);
+  saveAndPopulate() {
+    const elementData = {
+      name: this.elementName,
+      weight: this.elementWeight,
+      symbol: this.elementSymbol,
+    };
+
+    // Save to local storage
+    localStorage.setItem('elementData', JSON.stringify(elementData));
   }
 }

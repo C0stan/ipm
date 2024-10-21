@@ -1,35 +1,33 @@
 <div class="add">
   <mat-form-field>
-    <mat-label></mat-label>
+    <mat-label>Name</mat-label>
     <input
       matInput
       placeholder="Enter element name"
-      [(ngModel)]="theElement.name"
-      required
+      [(ngModel)]="elementName"
     />
   </mat-form-field>
   <mat-form-field>
-    <mat-label></mat-label>
+    <mat-label>Weight</mat-label>
     <input
       matInput
       placeholder="Enter element weight"
-      [(ngModel)]="theElement.weight"
-      required
+      [(ngModel)]="elementWeight"
     />
   </mat-form-field>
   <mat-form-field>
-    <mat-label></mat-label>
+    <mat-label>Symbol</mat-label>
     <input
       matInput
       placeholder="Enter element symbol"
-      [(ngModel)]="theElement.symbol"
-      required
+      [(ngModel)]="elementSymbol"
     />
   </mat-form-field>
   <button
+    routerLink="/form"
     mat-raised-button
     style="background-color: #3f51b5; color: white"
-    (click)="addElement(theElement)"
+    (click)="saveAndPopulate()"
   >
     View
   </button>
