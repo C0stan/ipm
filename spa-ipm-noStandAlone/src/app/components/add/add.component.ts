@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ElementService } from '../../services/service1';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -10,14 +12,15 @@ export class AddComponent {
   elementWeight: number | null = null;
   elementSymbol: string = '';
 
-  saveAndPopulate() {
-    const elementData = {
+  constructor(private x: ElementService, public router: Router) {}
+  // Method to send data when needed (e.g., on form submission)
+  sendData() {
+    const object = {
       name: this.elementName,
       weight: this.elementWeight,
       symbol: this.elementSymbol,
     };
-
-    // Save to local storage
-    localStorage.setItem('elementData', JSON.stringify(elementData));
+    this.x.sendObject(object);
+    this.router.navigate(['/form']); // Navigate after sending data
   }
 }
