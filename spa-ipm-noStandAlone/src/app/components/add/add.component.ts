@@ -20,7 +20,7 @@ export class AddComponent {
       weight: this.elementWeight,
       symbol: this.elementSymbol,
     };
-    this.x.sendObject(object);
+    // this.x.sendObject(object);
     this.router.navigate(['/form']); // Navigate after sending data
   }
 }

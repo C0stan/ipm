@@ -1,26 +1,50 @@
+// import { Injectable } from '@angular/core';
+
+// @Injectable({
+//   providedIn: 'root',
+// })
+// export class ElementService {
+//   private elementArray: any[] = [];
+// object: Object | undefined;
+// constructor(private http: HttpClient) {}
+// sendObject(finalObject: Object | undefined) {
+//   this.object = finalObject;
+// }
+// getObject() {
+//   return this.object;
+// }
+// getDataArray() {
+//   this.http.getDataArray(this.elementArray);
+// }
+// addElement(element: any) {
+//   this.elements.push(element);
+// Notify any subscribers if needed (e.g., using BehaviorSubject)
+// }
+// data saved in runtime
+
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PeriodicElement } from '../components/table/table.component';
-import { ELEMENT_DATA } from '../components/table/table.component';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ElementService {
-  private elements: PeriodicElement[] = ELEMENT_DATA;
-  object: Object | undefined;
-  constructor() {}
-  sendObject(finalObject: Object | undefined) {
-    this.object = finalObject;
+  data = new BehaviorSubject([]);
+
+  constructor(private http: HttpClient) {}
+
+  getDataArray(): Observable<any> {
+    return this.http.get<any[]>('../assets/data.json');
   }
-  getObject() {
-    return this.object;
-  }
-  getArray() {
-    return this.elements;
-  }
-  addElement(element: PeriodicElement) {
-    this.elements.push(element);
-    // Notify any subscribers if needed (e.g., using BehaviorSubject)
+
+  getSingleArrayValue(position: number): Observable<any> {
+    return this.getDataArray().pipe(
+      map((dataArray) =>
+        dataArray.find(
+          (item: { position: number }) => item.position === position
+        )
+      )
+    );
   }
 }
-// data saved in runtime

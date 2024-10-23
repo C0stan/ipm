@@ -22,7 +22,7 @@ export class FormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.object = this.x.getObject() || this.object;
+    // this.object = this.x.getObject() || this.object;
     console.log('Data received:', this.object);
   }
 
@@ -33,7 +33,7 @@ export class FormComponent implements OnInit {
       this.object.weight !== undefined &&
       this.object.symbol
     ) {
-      this.tableDataService.addElement(this.object as PeriodicElement); // Cast to PeriodicElement
+      // this.tableDataService.addElement(this.object as PeriodicElement); // Cast to PeriodicElement
     } else {
       console.error('Object is missing required properties');
     }
