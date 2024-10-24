@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,12 +21,12 @@ import { CustomSidenavComponent } from './components/custom-sidenav/custom-siden
   ],
   template: `
     <mat-toolbar class="mat-elevation-z3">
-      <button mat-icon-button>
+      <button mat-icon-button (click)="collapsed.set(!collapsed())">
         <mat-icon>menu</mat-icon>
       </button>
     </mat-toolbar>
     <mat-sidenav-container>
-      <mat-sidenav opened mode="side" [style.width]="'250px'">
+      <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
         <app-custom-sidenav />
       </mat-sidenav>
       <mat-sidenav-content class="content">
@@ -51,4 +51,7 @@ import { CustomSidenavComponent } from './components/custom-sidenav/custom-siden
     `,
   ],
 })
-export class AppComponent {}
+export class AppComponent {
+  collapsed = signal(false);
+  sidenavWidth = computed(() => (this.collapsed() ? '65px' : '250px'));
+}
