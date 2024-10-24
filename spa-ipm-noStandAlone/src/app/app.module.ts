@@ -19,10 +19,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AddComponent } from './components/add/add.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GridComponent } from './components/grid/grid.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { MatRadioModule } from '@angular/material/radio';
+import {
+  ConfigurableFocusTrapFactory,
+  FocusTrapFactory,
+} from '@angular/cdk/a11y';
 
 @NgModule({
   declarations: [
@@ -31,14 +37,17 @@ import { MatGridListModule } from '@angular/material/grid-list';
     FormComponent,
     AddComponent,
     GridComponent,
+    SidenavComponent,
   ],
   imports: [
-    MatGridListModule,
+    ReactiveFormsModule,
+    FormsModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     // all Mat
+    MatGridListModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
@@ -49,8 +58,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatSelectModule,
     MatInputModule,
     MatFormFieldModule,
+    MatRadioModule,
   ],
-  providers: [provideClientHydration(), provideAnimationsAsync()],
+  providers: [
+    provideClientHydration(),
+    provideAnimationsAsync(),
+    { provide: FocusTrapFactory, useClass: ConfigurableFocusTrapFactory },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

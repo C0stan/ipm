@@ -1,5 +1,7 @@
 https://www.youtube.com/watch?v=OqBQ2F-SXRU - Netflix clone
 
+https://www.youtube.com/watch?v=-NewNF-rA5c&t=5353s -
+
 # SpaIpmNoStandAlone
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.10.
